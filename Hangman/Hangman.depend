@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1653476260 source:d:\engineering\college\year 1\second term\c programming\hangman\hangman\main.cpp
+	"hangman.h"
+
+1653476260 d:\engineering\college\year 1\second term\c programming\hangman\hangman\hangman.h
+	<iostream>
+	<time.h>
+	<stdlib.h>
+	<windows.h>
+	<string>
+
+1653476412 source:d:\engineering\college\year 1\second term\c programming\hangman\hangman\hangman.cpp
+	"hangman.h"
+
