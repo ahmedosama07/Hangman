@@ -8,8 +8,8 @@ The game was made by `!Programmers` team
 - Ahmed Kamel
 - [Abdulrahman Hisham](https://github.com/abdelrahman1503)
 - Mostafa Khaled
-- Omar Ashmawy
-- Mostafa Mohamed
+- [Omar Ashmawy](https://github.com/omarashmawy11)
+- [Mostafa AbdelAzeem](https://github.com/MostafaMohamedAbelAzeem)
 - Ahmed Abdelhakem
-- Mohamed Ashraf
+- [Mohamed Ashraf](https://github.com/mohamedashraf18)
     
