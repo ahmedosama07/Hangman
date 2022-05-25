@@ -45,7 +45,7 @@ int main() {
 		if (win == true)
 			break;
 		cout << "\n\nIf you want to know the first letter write 'help' [Your lives will decrease!]" << endl;
-		cout << "\n\nLetters guesses: " << guessedLetters << endl;
+		cout << "\n\nLetters guesses: " << guessedLetters << "\t\t\t\t\t\t\t\t\tLives: " << live << endl;
 		cout << "\t\t\t\t\t\t\t\t\t\tWrong: " << wrong << endl;
 		cout << "\n\nEnter a letter: ";
 		cin >> letter;
