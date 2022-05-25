@@ -4,7 +4,7 @@
 bool win = false;
 
 // Get a random word from the wordlist depending on the level chosen
-string RandomWord(int choice) {
+string GetWord(int choice) {
 	int i = 0;
 	string line;
 	string word;

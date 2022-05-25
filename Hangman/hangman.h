@@ -15,7 +15,7 @@ using namespace std;
 extern bool win;
 
 // Declaring functions
-string RandomWord(int choice);                  // Function picks random word from wordlist
+string GetWord(int choice);                  // Function picks random word from wordlist
 void Draw_Hangman(int live);                    // Function to draw hangman
 int PrintWord(string word, string guessedLetters);      // Function to print the word being guessed
 

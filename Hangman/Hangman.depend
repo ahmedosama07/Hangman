@@ -3,13 +3,13 @@
 	"hangman.h"
 	<bits/stdc++.h>
 
-1653497750 d:\engineering\college\year 1\second term\c programming\hangman\hangman\hangman.h
+1653502019 d:\engineering\college\year 1\second term\c programming\hangman\hangman\hangman.h
 	<iostream>
 	<time.h>
 	<stdlib.h>
 	<windows.h>
 	<string>
 
-1653499315 source:d:\engineering\college\year 1\second term\c programming\hangman\hangman\hangman.cpp
+1653502019 source:d:\engineering\college\year 1\second term\c programming\hangman\hangman\hangman.cpp
 	"hangman.h"
 

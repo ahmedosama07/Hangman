@@ -41,7 +41,7 @@ int main(void) {
 		cin >> choice;
 	}
 
-	word = RandomWord(choice);
+	word = GetWord(choice);
 	system("cls"); // Clear the screen
 
 	int help_counter = 0;
