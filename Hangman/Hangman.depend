@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1653479917 source:d:\engineering\college\year 1\second term\c programming\hangman\hangman\main.cpp
+1653481616 source:d:\engineering\college\year 1\second term\c programming\hangman\hangman\main.cpp
 	"hangman.h"
 
 1653479810 d:\engineering\college\year 1\second term\c programming\hangman\hangman\hangman.h
@@ -9,6 +9,6 @@
 	<windows.h>
 	<string>
 
-1653479827 source:d:\engineering\college\year 1\second term\c programming\hangman\hangman\hangman.cpp
+1653481525 source:d:\engineering\college\year 1\second term\c programming\hangman\hangman\hangman.cpp
 	"hangman.h"
 

@@ -6,12 +6,13 @@ using namespace std;
 
 int main() {
     start:
-	int live = 7;
+	int live = 10;
 	int choice;
 	int num;
 	char ans;
 	string letter;
-	string word;
+	string wrong;
+	string word = "";
 	string guessedLetters = "";
 
 	cout << "choose your level: \n1)Easy\n2)Medium\n3)Hard\n-->";
@@ -45,6 +46,7 @@ int main() {
 			break;
 		cout << "\n\nIf you want to know the first letter write 'help' [Your lives will decrease!]" << endl;
 		cout << "\n\nLetters guesses: " << guessedLetters << endl;
+		cout << "\t\t\t\t\t\t\t\t\t\tWrong: " << wrong << endl;
 		cout << "\n\nEnter a letter: ";
 		cin >> letter;
 
@@ -52,6 +54,8 @@ int main() {
         cout << "here" << endl;
 		while (letter[b] != '\0')
 			b++;
+
+
 
 		//To catch those cheatty persons who write more than a letter
 		if (b >= 2)
@@ -91,6 +95,7 @@ int main() {
 
 		guessedLetters += letter[0];
 
+
 		if (word.find(letter) != -1 || help)
 		{
 			system("cls");
@@ -99,6 +104,7 @@ int main() {
 		else
 		{
 			system("cls");
+			wrong += letter[0];
 			live--;
 		}
 	}

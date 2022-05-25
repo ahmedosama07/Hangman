@@ -110,7 +110,7 @@ void Draw_Hangman(int live){
 		cout << "\t\t\t|_" << endl;
 		break;
 	case 7:
-		cout << "\t\t\t|--------|" << endl;
+		cout << "\t\t\t|--------" << endl;
 		cout << "\t\t\t|         " << endl;
 		cout << "\t\t\t|           " << endl;
 		cout << "\t\t\t|         " << endl;
@@ -118,6 +118,25 @@ void Draw_Hangman(int live){
 		cout << "\t\t\t|" << endl;
 		cout << "\t\t\t|_" << endl;
 		break;
+    case 8:
+		cout << "\t\t\t|-------" << endl;
+		cout << "\t\t\t|         " << endl;
+		cout << "\t\t\t|           " << endl;
+		cout << "\t\t\t|         " << endl;
+		cout << "\t\t\t|           " << endl;
+		cout << "\t\t\t|" << endl;
+		cout << "\t\t\t|_" << endl;
+		break;
+    case 9:
+		cout << "\t\t\t|------" << endl;
+		cout << "\t\t\t|         " << endl;
+		cout << "\t\t\t|           " << endl;
+		cout << "\t\t\t|         " << endl;
+		cout << "\t\t\t|           " << endl;
+		cout << "\t\t\t|" << endl;
+		cout << "\t\t\t|_" << endl;
+		break;
+
 	default:
 		break;
 	}
