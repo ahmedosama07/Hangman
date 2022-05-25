@@ -42,7 +42,7 @@ string RandomWord(int choice) {
 
 
 //Design the hangman depending on lives
-void Design(int live){
+void Draw_Hangman(int live){
 	switch (live)
 	{
 	case 0:

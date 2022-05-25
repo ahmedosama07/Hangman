@@ -1,6 +1,3 @@
-//Import libraries that we are going to use
-
-
 #include "hangman.h"
 
 using namespace std;
@@ -37,7 +34,7 @@ int main() {
 	while (live > 0)
 	{
 		win = true;
-		Design(live);
+		Draw_Hangman(live);
 		PrintWord(word, guessedLetters);
 
 		if(help)
