@@ -1,8 +1,8 @@
 #include "hangman.h"
 
-using namespace std;
-
+// Declaration and initialization of win variable which indicates the state of winning of the player
 bool win = false;
+
 // Get a random word from the wordlist depending on the level chosen
 string RandomWord(int choice) {
 	int i = 0;
@@ -18,6 +18,9 @@ string RandomWord(int choice) {
                            "agency",
                            "extraordinary",
                            "programmer"};
+
+
+    // Generating a random number which is being used as the index of the chosen word that the user is required to guess
     srand(time(0));
     switch (choice)
     {
@@ -32,16 +35,15 @@ string RandomWord(int choice) {
         break;
     }
 
-	while (i < 10)
+	if(i < 10)
 	{
         word = wordlist[i];
-        break;
 	}
 	return word;
 }
 
 
-//Design the hangman depending on lives
+//Draw the hangman depending on lives
 void Draw_Hangman(int live){
 	switch (live)
 	{
@@ -151,17 +153,26 @@ void Draw_Hangman(int live){
 	}
 }
 
-//Print chosen right letters or '-'
-int PrintWord(string word, string letter){
+//Print right guesses and complete the word with dots
+int PrintWord(string word, string guessedLetters){
+    /*
+    * Looping over the word
+    * Checking if the current letter exists in the guessed letters
+    * If true the letter is being printed
+    * Else a dot is printed
+    */
+
+    cout << "\n \t\t\t  ";
 	for (int i = 0; i < word.size(); i++)
 	{
-		if (letter.find(word.at(i)) != -1)
-			cout << word.at(i) << " ";
+		if (guessedLetters.find(word.at(i)) != -1)
+			cout << word.at(i);
 		else
 		{
 			cout << ".";
 			win = false;
 		}
 	}
+	cout << endl;
 	return 0;
 }
