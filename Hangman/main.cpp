@@ -8,9 +8,11 @@ using namespace std;
 //bool win = false;
 
 int main() {
+    start:
 	int live = 7;
 	int choice;
 	int num;
+	char ans;
 	string letter;
 	string word;
 	string guessedLetters = "";
@@ -114,5 +116,22 @@ int main() {
 		cout << "\n\n\n\t\t\t >>>You WIN!<<<\n\n";
 		cout << "The word was: " << word << endl;
 	}
+
+	cout << "Do you want to play again? (y/n)" << endl;
+
+	while((tolower(ans) != 'y') && (tolower(ans) != 'n'))
+        cin >> ans;
+
+	if(tolower(ans) == 'y')
+    {
+        system("cls");
+        goto start;
+    }
+    else if(tolower(ans) == 'n')
+    {
+        system("cls");
+        cout << "Nice to meet you :)" << endl;
+    }
+
 	return 0;
 }
