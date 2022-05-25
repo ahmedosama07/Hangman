@@ -150,7 +150,7 @@ int PrintWord(string word, string letter){
 			cout << word.at(i) << " ";
 		else
 		{
-			cout << "_ ";
+			cout << ".";
 			win = false;
 		}
 	}

@@ -11,7 +11,7 @@ int main() {
 	int num;
 	char ans;
 	string letter;
-	string wrong;
+	string wrong = "..........";
 	string word = "";
 	string guessedLetters = "";
 
@@ -104,7 +104,7 @@ int main() {
 		else
 		{
 			system("cls");
-			wrong += letter[0];
+			wrong[10-live] = letter[0];
 			live--;
 		}
 	}
