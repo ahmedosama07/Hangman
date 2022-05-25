@@ -63,7 +63,7 @@ int main(void) {
         //Validate input
         while (choice < 1 || choice>10 || old_choices[choice-1] == true) {
             system("cls");
-            cout << "You have enered a wrong number, renter your level..\n";
+            cout << "You have enered a wrong number" << endl;
             cout << "choose number from 1 to 10: ";
             cin >> choice;
         }
@@ -87,7 +87,7 @@ int main(void) {
             if (win == true)
                 break;
 
-            cout << "\n\nIf you want to know the first letter write 'help' [Your lives will decrease!]" << endl;
+            cout << "\n\nIf you want to know the first letter write 'help' [warning: Your lives will decrease!]" << endl;
             cout << "\n\n\t\t\t\t\t\t\t\t\t\tLives: " << live << endl;
             cout << "\n\n\t\t\t\t\t\t\t\t\t\t---------------------" << endl;
             cout << "\t\t\t\t\t\t\t\t\t\t| Wrong: " << wrong << " |" << endl;
@@ -95,17 +95,16 @@ int main(void) {
             cout << "\n\nEnter a letter: ";
             cin >> letter;
 
+            // To cover upper case problems
             for(int i = 0; i < letter.length(); i++)
             {
                 letter[i] = tolower(letter[i]);
             }
 
-
-
-            //To catch those cheatty persons who write more than a letter
             if (letter.length() >= 2)
             {
-                if (letter == "help") // If you need a help to know the first letter
+                // Help
+                if (letter == "help")
                 {
                     if(help_counter > 2)
                     {
@@ -132,8 +131,9 @@ int main(void) {
                 }
                 else
                 {
+                    // Anti cheating system
                     system("cls");
-                    for (int i = 0; i < 5; i++)
+                    while(true)
                     {
                         cout << "You are CHEATING!!!" << endl;
                     }
@@ -142,12 +142,14 @@ int main(void) {
 
 
 
+            // Letter found
             if (word.find(letter) != -1)
             {
                 system("cls");
                 right += letter[0];
                 continue;
             }
+            // Letter not found
             else
             {
                 system("cls");
@@ -156,18 +158,22 @@ int main(void) {
             }
         }
 
-        if (live == 0) //If we have finished our lives
-        {
-            cout << "\n\n\n\t\t\t >>>You Lose!<<<\n\n";
-            cout << "The word was: " << word << endl;
-        }
-        if (live > 0) //If we complete the word correctly
+
+        // If alive
+        if (live > 0)
         {
             cout << "\n\n\n\t\t\t >>>You WIN!<<<\n\n";
             score++;
             cout << "The word was: " << word << endl;
         }
+        // If dead
+        else
+        {
+            cout << "\n\n\n\t\t\t >>>You Lose!<<<\n\n";
+            cout << "The word was: " << word << endl;
+        }
 
+        // Restart game
         cout << "Do you want to play again? (y/n)" << endl;
 
         while((tolower(ans) != 'y') && (tolower(ans) != 'n'))
@@ -180,6 +186,8 @@ int main(void) {
             cout << "Your score is: " << score << endl;
             break;
         }
+
+        // Don't play the same game
         if(win)
             old_choices[choice-1] = true;
     } while((tolower(ans) == 'y') && score <= 10);
