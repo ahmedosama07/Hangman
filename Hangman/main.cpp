@@ -32,19 +32,25 @@
 
 #include "hangman.h"
 
+#define MAXLIVES 10
+
 int main(void) {
 
     char ans;
     int score = 0;
+    int choice;
+    bool old_choices[10];
+    for(int i = 0; i < 10; i++)
+        old_choices[i] = false;
 
     do
     {
         // Clear the screen at the beginning of new game
         system("cls");
         // Set the number of lives to be 10 each game
-        int live = 10;
-        int choice;
+        int live = MAXLIVES;
         bool help = false;
+        int help_counter = 0;
         ans = '\0';
         string letter;
         string wrong = "..........";
@@ -55,17 +61,19 @@ int main(void) {
         cin >> choice;
 
         //Validate input
-        while (choice < 1 || choice>10) {
+        while (choice < 1 || choice>10 || old_choices[choice-1] == true) {
             system("cls");
             cout << "You have enered a wrong number, renter your level..\n";
             cout << "choose number from 1 to 10: ";
             cin >> choice;
         }
 
+
+
         word = GetWord(choice);
         system("cls"); // Clear the screen
 
-        int help_counter = 0;
+
 
         while (live > 0)
         {
@@ -125,7 +133,7 @@ int main(void) {
                 else
                 {
                     system("cls");
-                    for (;;) //Infinity loop (like: while(true){} ..)
+                    for (int i = 0; i < 5; i++)
                     {
                         cout << "You are CHEATING!!!" << endl;
                     }
@@ -172,7 +180,9 @@ int main(void) {
             cout << "Your score is: " << score << endl;
             break;
         }
-    } while(tolower(ans) == 'y');
+        if(win)
+            old_choices[choice-1] = true;
+    } while((tolower(ans) == 'y') && score <= 10);
 
 
 	return 0;
