@@ -4,7 +4,7 @@ Hangman game is a guessing game for one player against computer. The computer ch
 
 The game was made by `!Programmers` team
 - [Ahmed Osama](https://github.com/ahmedosama07) 
-- Ziad Mohamed
+- [Ziad Elbouriny](https://github.com/ziadelbouriny)
 - Ahmed Kamel
 - [Abdulrahman Hisham](https://github.com/abdelrahman1503)
 - Mostafa Khaled
