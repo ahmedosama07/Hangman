@@ -6,8 +6,6 @@ bool win = false;
 // Get a random word from the wordlist depending on the level chosen
 string GetWord(int choice) {
 	int i = 0;
-	string line;
-	string word;
 	string wordlist[10] = {"act",
                            "add",
                            "bit",
@@ -20,31 +18,16 @@ string GetWord(int choice) {
                            "programmer"};
 
 
-    // Generating a random number which is being used as the index of the chosen word that the user is required to guess
-    srand(time(0));
-    switch (choice)
-    {
-    case 1:
-        i = (rand() % 3);
-        break;
-    case 2:
-        i = (rand() % 3) + 3;
-        break;
-    case 3:
-        i = (rand() % 3) + 7;
-        break;
-    }
 
-	if(i < 10)
-	{
-        word = wordlist[i];
-	}
-	return word;
+	return wordlist[choice-1];
 }
 
 
 //Draw the hangman depending on lives
-void Draw_Hangman(int live){
+void Draw_Hangman(int live, int score){
+    cout << "------------" << endl;
+    cout << "| Score: " << score << " |" << endl;
+    cout << "------------" << endl;
 	switch (live)
 	{
 	case 0:

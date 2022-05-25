@@ -13,145 +13,167 @@
 *
 *
 *
+*       1- The game starts by asking the user for a number from 1 to 10, each number corresponding to a word
+*       2- If the user provides invalid input, go to step 1
+*       3- The user is then asked to guess the letters of the word
+*       4- If the user inputs more than one letter, check if he inputs the word "help"
+*       5- If the user inputs "help", then check if he used help less than three times
+*       6- If true, he is given a letter of the word and his lives decreases by one
+*       7- Else, he is told that he reached the limit of hints he have and his lives remain as they are
+*       8- If he was providing more than one letter and not the word "help", he is considered a cheater and he gets punished by an infinite loop
+*       9- If the user provided a right letter then it is printed in the word. Otherwise his lives decreased by one and the letter is added to the wrong list
+*       10- If the lives of the user reached zero before guessing the right word he loses the game
+*       11- If the user won the game his score updates for the next game
+*       12- The user is asked if he wants to play again or not
+*       13- If the answer was yes, the game restarts with the new score
+*       14- If the answer was no, the game ends and prints the score
 *
 */
 
 #include "hangman.h"
 
 int main(void) {
-    start:
-	int live = 10;
-	int choice;
-	int num;
-	bool help = false;
-	char ans;
-	string letter;
-	string wrong = "..........";
-	string word = "";
-	string guessedLetters = "";
 
-	cout << "choose your level: \n1)Easy\n2)Medium\n3)Hard\n-->";
-	cin >> choice;
+    char ans;
+    int score = 0;
 
-	//Validate input
-	while (choice < 1 || choice>3) {
-		system("cls");
-		cout << "You have enered a wrong number, renter your level..\n";
-		cout << "choose your level: \n1)Easy\n2)Medium\n3)Hard\n-->";
-		cin >> choice;
-	}
+    do
+    {
+        // Clear the screen at the beginning of new game
+        system("cls");
+        // Set the number of lives to be 10 each game
+        int live = 10;
+        int choice;
+        bool help = false;
+        ans = '\0';
+        string letter;
+        string wrong = "..........";
+        string word = "";
+        string right = "";
 
-	word = GetWord(choice);
-	system("cls"); // Clear the screen
+        cout << "choose number from 1 to 10: ";
+        cin >> choice;
 
-	int help_counter = 0;
-
-	while (live > 0)
-	{
-		win = true;
-		help = false;
-		Draw_Hangman(live);
-		PrintWord(word, guessedLetters);
-
-
-		if (win == true)
-			break;
-		cout << "\n\nIf you want to know the first letter write 'help' [Your lives will decrease!]" << endl;
-		cout << "\n\n\t\t\t\t\t\t\t\t\t\tLives: " << live << endl;
-        cout << "\n\n\t\t\t\t\t\t\t\t\t\t---------------------" << endl;
-		cout << "\t\t\t\t\t\t\t\t\t\t| Wrong: " << wrong << " |" << endl;
-		cout << "\t\t\t\t\t\t\t\t\t\t---------------------" << endl;
-		cout << "\n\nEnter a letter: ";
-		cin >> letter;
-
-		for(int i = 0; i < letter.length(); i++)
-        {
-            letter[i] = tolower(letter[i]);
+        //Validate input
+        while (choice < 1 || choice>10) {
+            system("cls");
+            cout << "You have enered a wrong number, renter your level..\n";
+            cout << "choose number from 1 to 10: ";
+            cin >> choice;
         }
 
+        word = GetWord(choice);
+        system("cls"); // Clear the screen
+
+        int help_counter = 0;
+
+        while (live > 0)
+        {
+            win = true;
+            help = false;
+
+            Draw_Hangman(live, score);
+            PrintWord(word, right);
 
 
-		//To catch those cheatty persons who write more than a letter
-		if (letter.length() >= 2)
-		{
-			if (letter == "help") // If you need a help to know the first letter
-			{
-			    if(((choice == 1) && (help_counter > 0)) || ((choice == 2) && (help_counter > 1)) || ((choice == 3) && (help_counter > 2)))
+            if (win == true)
+                break;
+
+            cout << "\n\nIf you want to know the first letter write 'help' [Your lives will decrease!]" << endl;
+            cout << "\n\n\t\t\t\t\t\t\t\t\t\tLives: " << live << endl;
+            cout << "\n\n\t\t\t\t\t\t\t\t\t\t---------------------" << endl;
+            cout << "\t\t\t\t\t\t\t\t\t\t| Wrong: " << wrong << " |" << endl;
+            cout << "\t\t\t\t\t\t\t\t\t\t---------------------" << endl;
+            cout << "\n\nEnter a letter: ";
+            cin >> letter;
+
+            for(int i = 0; i < letter.length(); i++)
+            {
+                letter[i] = tolower(letter[i]);
+            }
+
+
+
+            //To catch those cheatty persons who write more than a letter
+            if (letter.length() >= 2)
+            {
+                if (letter == "help") // If you need a help to know the first letter
                 {
-                    cout << "You exceded the maximum number of helps" << endl;
-                    letter = "";
-                    system("pause");
+                    if(help_counter > 2)
+                    {
+                        cout << "You exceded the maximum number of helps" << endl;
+                        letter = "";
+                        system("pause");
+                    }
+                    else
+                    {
+                        help_counter++;
+                        wrong[10-live] = ' ';
+                        live--;
+                        srand(time(0));
+                        int i = 0;
+                        while((right.find(word.at(i)) != -1))
+                        {
+                            i = rand() % word.length();
+                        }
+                        cout << "-->\"" << word[i] << "\"<--" << endl;
+                        letter = word[i];
+                        help = true;
+                        system("pause");
+                    }
                 }
                 else
                 {
-                    help_counter++;
-                    wrong[10-live] = ' ';
-                    live--;
-                    srand(time(0));
-                    int i = 0;
-                    while((guessedLetters.find(word.at(i)) != -1))
+                    system("cls");
+                    for (;;) //Infinity loop (like: while(true){} ..)
                     {
-                        i = rand() % word.length();
+                        cout << "You are CHEATING!!!" << endl;
                     }
-                    cout << "-->\"" << word[i] << "\"<--" << endl;
-                    letter = word[i];
-                    help = true;
-                    system("pause");
                 }
-			}
-			else
-			{
-				system("cls");
-				for (;;) //Infinity loop (like: while(true){} ..)
-				{
-					cout << "You are CHEATING!!!" << endl;
-				}
-			}
-		}
+            }
 
 
-		guessedLetters += letter[0];
 
+            if (word.find(letter) != -1)
+            {
+                system("cls");
+                right += letter[0];
+                continue;
+            }
+            else
+            {
+                system("cls");
+                wrong[10-live] = letter[0];
+                live--;
+            }
+        }
 
-		if (word.find(letter) != -1)
-		{
-			system("cls");
-			continue;
-		}
-		else
-		{
-			system("cls");
-			wrong[10-live] = letter[0];
-			live--;
-		}
-	}
+        if (live == 0) //If we have finished our lives
+        {
+            cout << "\n\n\n\t\t\t >>>You Lose!<<<\n\n";
+            cout << "The word was: " << word << endl;
+        }
+        if (live > 0) //If we complete the word correctly
+        {
+            cout << "\n\n\n\t\t\t >>>You WIN!<<<\n\n";
+            score++;
+            cout << "The word was: " << word << endl;
+        }
 
-	if (live == 0) //If we have finished our lives
-	{
-		cout << "\n\n\n\t\t\t >>>You Lose!<<<\n\n";
-		cout << "The word was: " << word << endl;
-	}
-	if (live > 0) //If we complete the word correctly
-	{
-		cout << "\n\n\n\t\t\t >>>You WIN!<<<\n\n";
-		cout << "The word was: " << word << endl;
-	}
+        cout << "Do you want to play again? (y/n)" << endl;
 
-	cout << "Do you want to play again? (y/n)" << endl;
+        while((tolower(ans) != 'y') && (tolower(ans) != 'n'))
+            cin >> ans;
 
-	while((tolower(ans) != 'y') && (tolower(ans) != 'n'))
-        cin >> ans;
+        if(tolower(ans) == 'n')
+        {
+            system("cls");
+            cout << "Nice to meet you :)" << endl;
+            cout << "Your score is: " << score << endl;
+            break;
+        }
+    } while(tolower(ans) == 'y');
 
-	if(tolower(ans) == 'y')
-    {
-        system("cls");
-        goto start;
-    }
-    else if(tolower(ans) == 'n')
-    {
-        system("cls");
-        cout << "Nice to meet you :)" << endl;
-    }
 
 	return 0;
 }
