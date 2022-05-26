@@ -87,7 +87,8 @@ int main(void) {
             if (win == true)
                 break;
 
-            cout << "\n\nIf you want to know the first letter write 'help' [warning: Your lives will decrease!]" << endl;
+            cout << "\n\nIf you want to know the first letter write 'help' [warning: Your lives will decrease!]. You have " << 3 - help_counter << " remaining." << endl;
+
             cout << "\n\n\t\t\t\t\t\t\t\t\t\tLives: " << live << endl;
             cout << "\n\n\t\t\t\t\t\t\t\t\t\t---------------------" << endl;
             cout << "\t\t\t\t\t\t\t\t\t\t| Wrong: " << wrong << " |" << endl;
