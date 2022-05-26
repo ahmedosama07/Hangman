@@ -40,6 +40,7 @@ int main(void) {
     int score = 0;
     int choice;
     bool old_choices[10];
+    bool cheater = false;
     for(int i = 0; i < 10; i++)
         old_choices[i] = false;
 
@@ -134,10 +135,12 @@ int main(void) {
                 {
                     // Anti cheating system
                     system("cls");
-                    while(true)
-                    {
-                        cout << "You are CHEATING!!!" << endl;
-                    }
+                    cout << "You are Cheating!" << endl;
+                    live = 0;
+                    score -= 10;
+                    cout << "Your score is: " << score << endl;
+                    system("pause");
+                    cheater = true;
                 }
             }
 
@@ -148,7 +151,6 @@ int main(void) {
             {
                 system("cls");
                 right += letter[0];
-                continue;
             }
             // Letter not found
             else
@@ -159,9 +161,13 @@ int main(void) {
             }
         }
 
+        if(cheater)
+        {
+            break;
+        }
 
         // If alive
-        if (live > 0)
+        else if (live > 0)
         {
             cout << "\n\n\n\t\t\t >>>You WIN!<<<\n\n";
             score++;
