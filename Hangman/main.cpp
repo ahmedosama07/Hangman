@@ -169,6 +169,7 @@ int main(void) {
         // If dead
         else
         {
+            Draw_Hangman(live, score);
             cout << "\n\n\n\t\t\t >>>You Lose!<<<\n\n";
             cout << "The word was: " << word << endl;
         }
