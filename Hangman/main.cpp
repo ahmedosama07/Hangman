@@ -186,6 +186,7 @@ int main(void) {
             system("cls");
             cout << "Nice to meet you :)" << endl;
             cout << "Your score is: " << score << endl;
+            system("pause");
             break;
         }
 
