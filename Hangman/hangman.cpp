@@ -24,7 +24,7 @@ string GetWord(int choice) {
 
 
 //Draw the hangman depending on lives
-void Draw_Hangman(int live, int score){
+void DrawHangman(int live, int score){
     cout << "------------" << endl;
     cout << "| Score: " << score << " |" << endl;
     cout << "------------" << endl;

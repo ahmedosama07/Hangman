@@ -6,7 +6,6 @@
 #include <time.h>
 
 #include <stdlib.h>
-#include <windows.h>
 #include <string>
 
 // Using std namespace
@@ -17,7 +16,7 @@ extern bool win;
 
 // Declaring functions
 string GetWord(int choice);                  // Function picks random word from wordlist
-void Draw_Hangman(int live, int score);                    // Function to draw hangman
+void DrawHangman(int live, int score);                    // Function to draw hangman
 int PrintWord(string word, string guessedLetters);      // Function to print the word being guessed
 
 

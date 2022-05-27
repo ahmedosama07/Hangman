@@ -38,6 +38,7 @@ int main(void) {
 
     char ans;
     int score = 0;
+    int games = 0;
     int choice;
     bool old_choices[10];
     bool cheater = false;
@@ -81,7 +82,7 @@ int main(void) {
             win = true;
             help = false;
 
-            Draw_Hangman(live, score);
+            DrawHangman(live, score);
             PrintWord(word, right);
 
 
@@ -172,13 +173,28 @@ int main(void) {
             cout << "\n\n\n\t\t\t >>>You WIN!<<<\n\n";
             score++;
             cout << "The word was: " << word << endl;
+            system("pause");
+
         }
         // If dead
         else
         {
-            Draw_Hangman(live, score);
+            DrawHangman(live, score);
             cout << "\n\n\n\t\t\t >>>You Lose!<<<\n\n";
             cout << "The word was: " << word << endl;
+            system("pause");
+        }
+
+        games++;
+
+        if(games == 10)
+        {
+            system("cls");
+            cout << "No more available games for today." << endl;
+            cout << "Your score is: " << score << endl;
+            cout << "See you next time :)" << endl;
+            system("pause");
+            break;
         }
 
         // Restart game
@@ -197,9 +213,8 @@ int main(void) {
         }
 
         // Don't play the same game
-        if(win)
-            old_choices[choice-1] = true;
-    } while((tolower(ans) == 'y') && score <= 10);
+        old_choices[choice-1] = true;
+    } while(tolower(ans) == 'y');
 
 
 	return 0;
